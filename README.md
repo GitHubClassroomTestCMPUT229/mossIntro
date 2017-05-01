@@ -1,6 +1,6 @@
 # mossIntro
 
-# Setup
+### Setup
 Register with Moss to gain access to submission script  
 Registration:  email moss@moss.stanford.edu  
 Email body:
@@ -11,7 +11,7 @@ Queries: email moss-request@cs.stanford.edu
 moss file should not be made accessible per readme 
 Uses Perl.  Installed for my account -> default in configuration?  
 
-# Interface  
+### Interface  
 Can specify language with -l  
 Can specify directories of files using -d  
 Can specify base code files with -b        * Must take path to file  
