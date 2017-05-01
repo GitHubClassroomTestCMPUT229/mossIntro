@@ -22,7 +22,10 @@ Submit all of the ML programs in directories asn1.96/\* and asn1.97/\*, where as
 moss -l ml -b asn1.97/instructor/example.ml -b asn1.96/instructor/example.ml -d asn1.97/\*/\*.ml asn1.96/\*/\*.ml
 
 Submit all MIPS programs:  
-moss -l mips -b \<assignment>/instructor/\<file>.s -d \<assignment>/\*/\*.s
+moss -l mips -b \<assignment>/instructor/\<file>.s -d \<assignment>/\*/\*.s  
 
 Run moss on simple files:  
 moss -l mips ./simple/*.s  
+
+Run moss on instructorTest:  
+moss -l mips -b ./instructorTest/instructor/example.s -d instructorTest/\*/\*.s  
