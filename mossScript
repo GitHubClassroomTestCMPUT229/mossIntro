@@ -2,8 +2,8 @@
 
 # Parsing cmdline opts in bash scripts
 # http://www.bahmanm.com/blogs/command-line-options-how-to-parse-in-bash-using-getopt
-FLAG="-d"
-if [ $1 != $FLAG ]; then
+DIRFLAG="-d"
+if [ $1 != $DIRFLAG ]; then
     echo usage: moss -d \<lab_directory\>
     exit
 fi
@@ -11,7 +11,10 @@ if [ -z "$2" ]; then
     echo usage: moss -d \<lab_directory\>
     exit
 fi
-DIR=$2
-OUTPUTDIR="./$DIR/output.txt" 
-./moss -l mips ./$DIR/*.s | grep '^http' > $OUTPUTDIR
+DIR=$2 
+RESULTS=$(./moss -l mips ./$DIR/*.s | grep '^http')
+echo $RESULTS
+curl -o "./$DIR/results.html" -L $RESULTS
+
+# ./moss -l mips ./$DIR/*.s | grep '^http' > $OUTPUTDIR
 # ./moss -l mips ./simple/*.s | grep '^http' > output.txt
