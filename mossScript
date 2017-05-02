@@ -1,20 +1,40 @@
 #!/bin/bash
 
-# Parsing cmdline opts in bash scripts
-# http://www.bahmanm.com/blogs/command-line-options-how-to-parse-in-bash-using-getopt
-DIRFLAG="-d"
-if [ $1 != $DIRFLAG ]; then
-    echo usage: moss -d \<lab_directory\>
-    exit
+if [ -z "$1" ]; then
+    echo usage: moss -d \<lab_directory\> \[-i \<basefile1\>, ... , \<basefileN\>\]
+    exit 1
 fi
-if [ -z "$2" ]; then
-    echo usage: moss -d \<lab_directory\>
-    exit
+
+# getopts tutorial
+# http://wiki.bash-hackers.org/howto/getopts_tutorial
+# while loop modified from above source
+while getopts ":d:b:" opt; do
+  case $opt in
+    d)
+      DIR=$OPTARG
+      ;;
+    b)
+      BASE=$OPTARG
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      exit 1
+      ;;
+    :)
+      echo "Option -$OPTARG requires an argument." >&2
+      exit 1
+      ;;
+  esac
+done
+
+if [ "$BASE" != "" ]; then
+  # $RESULTS = the url returned by moss
+  RESULTS=$(./moss -l mips -b ./$DIR/instructor/$BASE -d ./$DIR/*/*.s | grep '^http')
+else
+  RESULTS=$(./moss -l mips ./$DIR/*/*.s | grep '^http')
 fi
-DIR=$2 
-RESULTS=$(./moss -l mips ./$DIR/*.s | grep '^http')
-echo $RESULTS
-curl -o "./$DIR/results.html" -L $RESULTS
+# The results page is saved locally in the lab directory as results.html
+curl -s -o "./$DIR/results.html" -L $RESULTS
 
 # ./moss -l mips ./$DIR/*.s | grep '^http' > $OUTPUTDIR
 # ./moss -l mips ./simple/*.s | grep '^http' > output.txt
