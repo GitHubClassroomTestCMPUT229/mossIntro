@@ -1,0 +1,2 @@
+#!/bin/bash
+./moss -l mips ./simple/*.s | grep '^http' > output.txt
