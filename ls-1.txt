@@ -1,6 +1,0 @@
-instructorTest
-ls-1.txt
-moss
-mossScript
-README.md
-simple
