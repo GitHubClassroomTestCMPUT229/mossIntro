@@ -1,5 +1,8 @@
 # mossIntro
 
+### Workflow  
+![moss](moss.png)  
+
 ### Setup
 Register with Moss to gain access to submission script  
 Registration:  email moss@moss.stanford.edu  
