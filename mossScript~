@@ -14,7 +14,7 @@ while getopts ":d:b" opt; do
       DIR=$OPTARG
       ;;
     b)
-      cat ./$DIR/instructor/*.s > ./$DIR/instructor/base.s
+      cat ./$DIR/instructor/*.s > base.s
       BASE=true
       ;;
     \?)
