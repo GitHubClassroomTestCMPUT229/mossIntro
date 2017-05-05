@@ -32,3 +32,5 @@ moss -l mips ./simple/*.s
 
 Run moss on instructorTest:  
 moss -l mips -b ./instructorTest/instructor/example.s -d instructorTest/\*/\*.s  
+
+Noah has wget process for gathering the info from moss.  
